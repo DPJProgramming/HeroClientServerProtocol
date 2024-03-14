@@ -69,29 +69,41 @@ public class HeroService implements Runnable
     public void executeCommand(String command)
     {
         int id = in.nextInt();
-        int id2 = in.nextInt();
 
-        if (command.equals("heal"))
+        if (command.equalsIgnoreCase("heal"))
         {
             int amount = in.nextInt();
-            headquarters.heal(id, amount);
+            SuperHero hero = headquarters.getHero(id);
+            out.println(hero.name + " has " + headquarters.getHp(id) + " hp left, " +
+                        "but after healing " + amount + " points, " + hero.name + " has " + headquarters.heal(id, amount));
         }
-        else if (command.equals("damage"))
+        else if (command.equalsIgnoreCase("damage"))
         {
             int amount = in.nextInt();
+            SuperHero hero = headquarters.getHero(id);
             headquarters.damage(id, amount);
+            out.println("A villain has attacked " + hero.name + " for " + amount + " damage! " +
+                    hero.name + " only has " + headquarters.getHp(id) + " hp left out of " + hero.maxHp);
         }
-        else if (command.equals("fight"))
+        else if (command.equalsIgnoreCase("gethp"))
         {
-            headquarters.fight(id, id2);
+            SuperHero hero = headquarters.getHero(id);
+            headquarters.getHp(id);
+            out.println(hero.name + "'s hp is currently " + hero.Hp + " out of " + hero.maxHp);
         }
-//        else if (!command.equals("BALANCE"))
-//        {
-//            out.println("Invalid command");
-//            out.flush();
-//            return;
-//        }
-        //out.println(id + " " + headquarters.getHp(id));
+        else if (command.equalsIgnoreCase("fight"))
+        {
+            int id2 = in.nextInt();
+            SuperHero hero = headquarters.getHero(id);
+            SuperHero hero2 = headquarters.getHero(id2);
+            headquarters.fight(id, id2);
+            out.println(hero.name + " attacks " + hero2.name + ". " +
+                    hero.name + " has " + headquarters.getStamina(id) + " stamina left out of " + hero.maxStamina + ", and " +
+                    hero2.name + " has " + headquarters.getHp(id2) + " hp left out of " + hero2.maxHp);
+        }
+        else{
+            out.println("Invalid command");
+        }
         out.flush();
     }
 }

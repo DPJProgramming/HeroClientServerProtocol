@@ -7,15 +7,21 @@ public class Headquarters
 
     /**
      Constructs a headquarters with a given number of heroes
-     @param size the number of accounts
+     @param size the number of SuperHeroes
      */
     public Headquarters(int size)
     {
         superHeroes = new SuperHero[size];
-        for (int i = 0; i < superHeroes.length; i++)
-        {
-            superHeroes[i] = new SuperHero();
-        }
+        superHeroes[0] = new SuperHero("Spider-man", 6, 6, 8, 8,  3); //attack power out of 5
+        superHeroes[1] = new SuperHero("Thor", 10, 10, 5, 5,  5);
+        superHeroes[2] = new SuperHero("Captain America", 6, 6, 10, 10,  2);
+        superHeroes[3] = new SuperHero("Hulk", 10, 10, 4, 4,  5);
+        superHeroes[4] = new SuperHero("Wolverine", 7, 7, 10, 10,  3);
+        superHeroes[5] = new SuperHero("Batman", 6, 6, 9, 9,  2);
+        superHeroes[6] = new SuperHero("Cyclops", 5, 5, 5, 5,  4);
+        superHeroes[7] = new SuperHero("Colossus", 9, 9, 6, 6,  4);
+        superHeroes[8] = new SuperHero("She-Hulk", 8, 8, 5, 5,  4);
+        superHeroes[9] = new SuperHero("Flash", 5, 5, 10, 10,  1);
     }
 
     /**
@@ -26,13 +32,7 @@ public class Headquarters
     public int heal(int heroId, int healAmount)
     {
         SuperHero hero = superHeroes[heroId];
-        if(hero.Hp + healAmount >= hero.maxHp){
-            hero.Hp = hero.maxHp;
-        }
-        else{
-            hero.Hp += healAmount;
-        }
-        return hero.Hp;
+        return hero.heal(healAmount);
     }
 
     /**
@@ -48,29 +48,42 @@ public class Headquarters
 
     /**
      gets the remaining hp from hero
-     @param accountNumber the account number
-     @return the account balance
+     @param id unique identifier for each hero
+     @return the heroes current hp
      */
-    public double getHp(int accountNumber)
+    public int getHp(int id)
     {
-        SuperHero account = superHeroes[accountNumber];
-        return account.getHp();
+        return superHeroes[id].getHp();
     }
 
     /**
      gets the remaining hp from hero
      @param heroId1 the attacking hero
      @param heroId2 the defending hero
-     @return the account balance
      */
-    public String fight(int heroId1, int heroId2)
+    public void fight(int heroId1, int heroId2)
     {
         SuperHero hero1 = superHeroes[heroId1];
         SuperHero hero2 = superHeroes[heroId2];
 
+        hero1.attack();
+        hero2.Hp -= hero1.attackPower;
+    }
 
-        return hero1.name + " attacks " + hero2.name + "/n"
-                + hero1.name + " has " + hero1.getStamina() + " left and "
-                + hero2.name + " has " + hero2.getHp() + " left.";
+    /**
+     gets the remaining stamina from hero
+     @param id unique identifier for a hero
+     */
+    public int getStamina (int id){
+        return superHeroes[id].getStamina();
+    }
+
+    /**
+     gets specific hero from superHeroes array
+     @param id unique identifier for a hero
+     @return Superhero
+     */
+    public SuperHero getHero(int id){
+        return superHeroes[id];
     }
 }

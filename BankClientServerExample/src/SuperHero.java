@@ -19,7 +19,7 @@ public class SuperHero
      */
     public SuperHero()
     {
-        Hp = 11;
+        Hp = 10;
         name = "hero";
         maxHp = 10;
         stamina = 10;
@@ -48,20 +48,21 @@ public class SuperHero
      heals a hero, increasing their hp
      @param healAmount the amount to heal
      */
-    public void heal(int healAmount)
+    public int heal(int healAmount)
     {
-        if(Hp + healAmount > maxHp){
+        if(Hp + healAmount >= maxHp){
             Hp = maxHp;
         }
         else{
-            Hp = maxHp;
+            Hp += healAmount;
         }
+        return getHp();
     }
 
 
     /**
      subtracts hp from hero
-     @param amount the amount to withdraw
+     @param amount the amount to decrease by
      */
     public void damage(int amount)
     {
@@ -76,7 +77,7 @@ public class SuperHero
 
     /**
      Gets the current hp of hero
-     @return the current balance
+     @return the current Hp
      */
     public int getHp()
     {
@@ -84,12 +85,11 @@ public class SuperHero
     }
 
     /**
-     Gets the current hp of hero
-     @return the current balance
+     Decreases heroes stamina
      */
-    public int attack()
+    public void attack()
     {
-        return stamina - 1;
+        stamina -= 1;
     }
 
     /**
