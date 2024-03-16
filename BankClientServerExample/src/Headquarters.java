@@ -12,12 +12,12 @@ public class Headquarters
     public Headquarters(int size)
     {
         superHeroes = new SuperHero[size];
-        superHeroes[0] = new SuperHero("Spider-man", 6, 6, 8, 8,  3); //attack power out of 5
-        superHeroes[1] = new SuperHero("Thor", 10, 10, 5, 5,  5);
+        superHeroes[0] = new SuperHero("Spider-man", 6, 6, 7, 7,  3); //attack power out of 5
+        superHeroes[1] = new SuperHero("Thor", 10, 10, 4, 4,  5);
         superHeroes[2] = new SuperHero("Captain America", 6, 6, 10, 10,  2);
         superHeroes[3] = new SuperHero("Hulk", 10, 10, 4, 4,  5);
-        superHeroes[4] = new SuperHero("Wolverine", 7, 7, 10, 10,  3);
-        superHeroes[5] = new SuperHero("Batman", 6, 6, 9, 9,  2);
+        superHeroes[4] = new SuperHero("Wolverine", 8, 8, 7, 7,  3);
+        superHeroes[5] = new SuperHero("Batman", 6, 6, 8, 8,  2);
         superHeroes[6] = new SuperHero("Cyclops", 5, 5, 5, 5,  4);
         superHeroes[7] = new SuperHero("Colossus", 9, 9, 6, 6,  4);
         superHeroes[8] = new SuperHero("She-Hulk", 8, 8, 5, 5,  4);
@@ -64,10 +64,14 @@ public class Headquarters
     public void fight(int heroId1, int heroId2)
     {
         SuperHero hero1 = superHeroes[heroId1];
-        SuperHero hero2 = superHeroes[heroId2];
 
-        hero1.attack();
-        hero2.Hp -= hero1.attackPower;
+        if(hero1.getStamina() > 0) {
+            hero1.attack();
+            damage(heroId2, hero1.attackPower);
+        }
+        else{
+            damage(heroId2, 0);
+        }
     }
 
     /**

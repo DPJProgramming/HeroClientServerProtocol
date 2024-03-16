@@ -74,7 +74,7 @@ public class HeroService implements Runnable
         {
             int amount = in.nextInt();
             SuperHero hero = headquarters.getHero(id);
-            out.println(hero.name + " has " + headquarters.getHp(id) + " hp left, " +
+            out.println(hero.name + " has " + hero.getHp() + " hp left, " +
                         "but after healing " + amount + " points, " + hero.name + " has " + headquarters.heal(id, amount));
         }
         else if (command.equalsIgnoreCase("damage"))
