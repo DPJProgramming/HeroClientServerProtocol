@@ -74,7 +74,7 @@ public class HeroService implements Runnable
         {
             int amount = in.nextInt();
             SuperHero hero = headquarters.getHero(id);
-            out.println(hero.name + " has " + headquarters.getHp(id) + " hp left, " +
+            out.println(hero.name + " has " + hero.getHp() + " hp left, " +
                         "but after healing " + amount + " points, " + hero.name + " has " + headquarters.heal(id, amount));
         }
         else if (command.equalsIgnoreCase("damage"))
@@ -88,8 +88,7 @@ public class HeroService implements Runnable
         else if (command.equalsIgnoreCase("gethp"))
         {
             SuperHero hero = headquarters.getHero(id);
-            headquarters.getHp(id);
-            out.println(hero.name + "'s hp is currently " + hero.Hp + " out of " + hero.maxHp);
+            out.println(hero.name + "'s hp is currently " + headquarters.getHp(id) + " out of " + hero.maxHp);
         }
         else if (command.equalsIgnoreCase("fight"))
         {

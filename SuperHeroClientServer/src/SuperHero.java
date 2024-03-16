@@ -56,7 +56,7 @@ public class SuperHero
         else{
             Hp += healAmount;
         }
-        return getHp();
+        return Hp;
     }
 
 
@@ -66,8 +66,7 @@ public class SuperHero
      */
     public void damage(int amount)
     {
-        int newHp = Hp - amount;
-        if(newHp >= 0) {
+        if(Hp - amount > 0) {
             Hp -= amount;
         }
         else{
@@ -89,7 +88,12 @@ public class SuperHero
      */
     public void attack()
     {
-        stamina -= 1;
+        if(stamina - 2 > 0){
+            stamina -= 2;
+        }
+        else {
+            stamina = 0;
+        }
     }
 
     /**
