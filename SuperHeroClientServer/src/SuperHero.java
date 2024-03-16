@@ -88,8 +88,8 @@ public class SuperHero
      */
     public void attack()
     {
-        if(stamina - 1 > 0){
-            stamina -= 1;
+        if(stamina - 2 > 0){
+            stamina -= 2;
         }
         else {
             stamina = 0;

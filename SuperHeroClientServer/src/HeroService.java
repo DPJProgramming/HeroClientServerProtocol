@@ -88,8 +88,7 @@ public class HeroService implements Runnable
         else if (command.equalsIgnoreCase("gethp"))
         {
             SuperHero hero = headquarters.getHero(id);
-            headquarters.getHp(id);
-            out.println(hero.name + "'s hp is currently " + hero.Hp + " out of " + hero.maxHp);
+            out.println(hero.name + "'s hp is currently " + headquarters.getHp(id) + " out of " + hero.maxHp);
         }
         else if (command.equalsIgnoreCase("fight"))
         {

@@ -17,9 +17,9 @@ public class Headquarters
         superHeroes[2] = new SuperHero("Captain America", 6, 6, 10, 10,  2);
         superHeroes[3] = new SuperHero("Hulk", 10, 10, 4, 4,  5);
         superHeroes[4] = new SuperHero("Wolverine", 8, 8, 7, 7,  3);
-        superHeroes[5] = new SuperHero("Batman", 6, 6, 8, 8,  2);
-        superHeroes[6] = new SuperHero("Cyclops", 5, 5, 5, 5,  4);
-        superHeroes[7] = new SuperHero("Colossus", 9, 9, 6, 6,  4);
+        superHeroes[5] = new SuperHero("Batman", 5, 5, 8, 8,  2);
+        superHeroes[6] = new SuperHero("Cyclops", 4, 4, 6, 6,  4);
+        superHeroes[7] = new SuperHero("Colossus", 9, 9, 5, 5,  4);
         superHeroes[8] = new SuperHero("She-Hulk", 8, 8, 5, 5,  4);
         superHeroes[9] = new SuperHero("Flash", 5, 5, 10, 10,  1);
     }
